@@ -7,6 +7,7 @@
 
 # dependencies
 /src/basic-html/node_modules
+/src/typescript-demo/node_modules
 /node_modules
 
 # IDEs and editors
