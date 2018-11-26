@@ -1,0 +1,14 @@
+.mystyle-basic-border-color {
+    color: red;
+    font-weight: bold;
+    display: inline-block;
+    border: 1px solid blue;
+}
+
+.mystyle-text-background {
+    background-color: #eeeeee;
+}
+
+.mystyle-text-background {
+    background-color: goldenrod;
+}
