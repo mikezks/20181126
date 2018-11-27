@@ -4,15 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server",
+    "start": "npm run start:webpack",
+    "serve": "live-server",
     "tsc:watch": "tsc --watch",
     "tsc": "tsc",
+    "start:webpack": "concurrently \"npm:build:webpack\" \"npm:serve\"",
+    "build:webpack": "webpack -d --watch",
+    "build:webpack:prod": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "live-server": "^1.2.0",
-    "typescript": "^3.1.6"
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.1.6",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
   }
 }

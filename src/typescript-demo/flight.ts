@@ -1,4 +1,4 @@
-interface Flight {
+export interface Flight {
     id: number;
     from: string;
     to: string;
@@ -8,7 +8,7 @@ interface Flight {
     calcPrice?(): number;
 }
 
-class ScheduledFlight implements Flight {
+export class ScheduledFlight implements Flight {
     id: number;
     from: string;
     to: string;
@@ -29,7 +29,7 @@ class ScheduledFlight implements Flight {
     }
 }
 
-class FlightManager {
+export class FlightManager {
     private _cache: Flight[];
 
     constructor(cache: Flight[]) {
@@ -60,3 +60,10 @@ class FlightManager {
         return result;
     }
 }
+
+console.log(Math.random());
+
+let maxInt = (Number as any).MAX_SAFE_INTEGER;
+console.log(maxInt === maxInt - 1, maxInt);
+maxInt++;
+console.log(maxInt === maxInt + 1, maxInt);
