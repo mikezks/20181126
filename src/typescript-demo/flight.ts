@@ -59,6 +59,30 @@ export class FlightManager {
         const result = f.from === from && f.to === to;
         return result;
     }
+
+    searchFromWeb(
+        from: string,
+        to: string,
+        success: (flights: Flight[]) => void,
+        failed: (err: string) => void
+    ): void {
+        const xmlHttp = new XMLHttpRequest();
+
+        xmlHttp.onreadystatechange = () => {
+            console.log(xmlHttp.readyState, xmlHttp.status);
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                console.log(xmlHttp.responseText);
+                success(JSON.parse(xmlHttp.responseText));
+            } else if (xmlHttp.readyState === 4 && xmlHttp.status >= 400) {
+                console.error(xmlHttp.responseText);
+                failed(xmlHttp.responseText);
+            }
+        }
+
+        const url = `http://www.angular.at/api/flight?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
+        xmlHttp.open('GET', url);
+        xmlHttp.send();
+    }
 }
 
 console.log(Math.random());

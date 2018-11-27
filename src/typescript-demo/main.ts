@@ -70,3 +70,19 @@ let flights: Array<Flight> = [
 const fm = new FlightManager(flights);
 
 console.log(fm.search('Graz', 'Hamburg'));
+console.log(fm.searchFromWeb(
+    'Graz',
+    'Hamburg',
+    //flights => console.log('Number of Flights', flights.length),
+    flights => flights.forEach(flight => console.log(flight.id)),
+    /* (
+        (flights) => {
+            flights.forEach(
+                (flight) => {
+                    console.log(flight.id)
+                }
+            )
+        }
+    ), */
+    err => console.log(err)
+));
