@@ -12,6 +12,7 @@ export class FlightSearchComponent implements OnInit {
   to: string = 'Hamburg';
   flights: Flight[] = [];
   selectedFlight: Flight;
+  message: string;
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +34,30 @@ export class FlightSearchComponent implements OnInit {
       .subscribe(
         flights => this.flights = flights,
         err => console.error('Error loading flights', err)
+      );
+  }
+
+  save(): void {
+    const url = 'http://www.angular.at/api/flight';
+
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json');
+
+    this.http
+      .post<Flight>(
+        url,
+        this.selectedFlight,
+        { headers }
+      )
+      .subscribe(
+        flight => {
+          this.selectedFlight = flight;
+          this.message = 'Erfolgreich gespeichert!';
+        },
+        err => {
+          console.error('Fehler beim Speichern', err);
+          this.message = 'Fehler beim Speichern: ' + JSON.stringify(err, null, '\t');
+        }
       );
   }
 

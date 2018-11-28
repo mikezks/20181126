@@ -34,20 +34,24 @@
   <table class="table table-contensed">
     <thead>
       <tr>
-        <th>Id</th>
+        <th>ID</th>
         <th>From</th>
         <th>To</th>
         <th>Date</th>
         <th></th>
       </tr>
     </thead>
-    <tr *ngFor="let flight of flights">
+    <tr
+      *ngFor="let flight of flights"
+      [class.active]="flight === selectedFlight">
       <td>{{ flight.id }}</td>
       <td>{{ flight.from }}</td>
       <td>{{ flight.to }}</td>
       <td>{{ flight.date | date:'dd.MM.yyyy HH:mm' }}</td>
       <td>
-        <a (click)="select(flight)">Select</a>
+        <a
+          (click)="select(flight)"
+          style="cursor: pointer;">Select</a>
       </td>
     </tr>
   </table>
@@ -56,5 +60,48 @@
 <div class="card" *ngIf="selectedFlight">
   <div class="content">
     <pre>{{ selectedFlight | json }}</pre>
+  </div>
+</div>
+
+<div class="card" *ngIf="selectedFlight">
+  <div class="content">
+    <div *ngIf="message">
+      <pre>{{ message }}</pre>
+    </div>
+  
+    <div class="form-group">
+      <label>ID</label>
+      <input
+        [ngModel]="selectedFlight.id"
+        class="form-control"
+        disabled>
+    </div>
+  
+    <div class="form-group">
+      <label>From</label>
+      <input
+        [(ngModel)]="selectedFlight.from"
+        class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>To</label>
+      <input
+        [(ngModel)]="selectedFlight.to"
+        class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Date</label>
+      <input
+        [(ngModel)]="selectedFlight.date"
+        class="form-control">
+    </div>
+    
+    <div class="form-group">
+      <button
+        (click)="save()"
+        class="btn btn-default" >Save</button>
+    </div>
   </div>
 </div>
