@@ -1,18 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Flight } from '../entities/flight';
+import { BASE_URL } from './flight.token';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightService {
+  url: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(BASE_URL) private baseUrl: string) {
+    this.url = baseUrl + 'flight';
+  }
 
   find(from: string, to: string): Observable<Flight[]> {
-    const url = 'http://www.angular.at/api/flight';
-
     const headers = new HttpHeaders()
       .set('Accept', 'application/json');
 
@@ -21,6 +25,14 @@ export class FlightService {
       .set('to', to);
 
     return this.http
-      .get<Flight[]>(url, { headers, params });
+      .get<Flight[]>(this.url, { headers, params });
+  }
+
+  save(flight: Flight): Observable<Flight> {
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json');
+
+    return this.http
+      .post<Flight>(this.url, flight, { headers });
   }
 }
