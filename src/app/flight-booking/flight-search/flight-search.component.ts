@@ -9,11 +9,15 @@ import { Flight } from '../../entities/flight';
   styleUrls: ['./flight-search.component.scss']
 })
 export class FlightSearchComponent implements OnInit {
-  from: string = 'Graz';
-  to: string = 'Hamburg';
+  from: string = 'Hamburg';
+  to: string = 'Graz';
   flights: Flight[] = [];
   selectedFlight: Flight;
   message: string;
+  basket: object = {
+    3: true,
+    5: true
+  };
 
   constructor(private flightService: AbstractFlightService) { }
 
