@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { CityPipe } from './pipes/city.pipe';
+import { CityDirective } from './validators/city.directive';
 
 @NgModule({
   imports: [
@@ -10,10 +11,12 @@ import { CityPipe } from './pipes/city.pipe';
     FormsModule
   ],
   declarations: [
-    CityPipe
+    CityPipe,
+    CityDirective
   ],
   exports: [
     CityPipe,
+    CityDirective,
     FormsModule
   ]
 })

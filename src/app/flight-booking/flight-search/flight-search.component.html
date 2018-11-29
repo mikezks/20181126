@@ -15,7 +15,8 @@
           required
           minlength="3"
           maxlength="10"
-          pattern="[a-zA-Z]*">
+          pattern="[a-zA-Z]*"
+          city>
         <div
           *ngIf="f?.controls['from']?.hasError('required')"
           class="text-danger">
@@ -37,6 +38,7 @@
       <div class="form-group">
         <button
           (click)="search()"
+          [disabled]="f.invalid"
           class="btn btn-default">Search</button>
       </div>
     </form>
