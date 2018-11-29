@@ -5,13 +5,27 @@
 
   <div class="content">
 
-    <form>
+    <form #f="ngForm">
       <div class="form-group">
         <label>From:</label>
         <input
           [(ngModel)]="from"
           name="from"
-          class="form-control">
+          class="form-control"
+          required
+          minlength="3"
+          maxlength="10"
+          pattern="[a-zA-Z]*">
+        <div
+          *ngIf="f?.controls['from']?.hasError('required')"
+          class="text-danger">
+          Please enter a value.
+        </div>
+        <div
+          *ngIf="f?.controls['from']?.hasError('minlength')"
+          class="text-danger">
+          Please enter at least 3 chars.
+        </div>
       </div>
       <div class="form-group">
         <label>To:</label>
@@ -26,7 +40,10 @@
           class="btn btn-default">Search</button>
       </div>
     </form>
-
+    <pre 
+      *ngIf="f?.controls['from']?.errors">
+      {{ f?.controls['from']?.errors | json }}
+    </pre>
   </div>
 </div>
 
