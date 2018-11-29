@@ -1,8 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Flight } from '../entities/flight';
-import { BASE_URL } from './flight.token';
+
+import { BASE_URL } from '../../app.token';
+import { Flight } from '../../entities/flight';
 
 @Injectable({
   providedIn: 'root'
