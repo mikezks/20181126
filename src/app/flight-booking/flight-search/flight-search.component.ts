@@ -48,6 +48,10 @@ export class FlightSearchComponent implements OnInit {
       );
   }
 
+  handleEvent(flight: Flight, status: boolean): void {
+    this.basket[flight.id] = status;
+  }
+
   select(f: Flight): void {
     this.selectedFlight = f;
   }

@@ -37,7 +37,15 @@
     <app-flight-card
       [item]="flight"
       [selected]="basket[flight.id]"
-      (selectedChange)="basket[flight.id] = $event"></app-flight-card>
+      (selectedChange)="handleEvent(flight, $event)">
+
+      <span class="my-bottom-content">Hello Flight!</span>
+
+      <pre>
+          {{ basket | json }}
+      </pre>
+
+    </app-flight-card>
   </div>
 </div>
 
