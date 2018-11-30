@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
 import { FlightEditComponent } from './flight-booking/flight-edit/flight-edit.component';
+import { FlightTypeaheadComponent } from './flight-booking/flight-typeahead/flight-typeahead.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'flight-booking/flight-edit',
     component: FlightEditComponent
+  },
+  {
+    path: 'flight-booking/flight-typeahead',
+    component: FlightTypeaheadComponent
   },
   {
     path: '**',
