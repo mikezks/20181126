@@ -5,7 +5,7 @@
 
   <div class="content">
 
-    <form #f="ngForm">
+    <form #f="ngForm" roundTrip>
       <div class="form-group">
         <label>From:</label>
         <input
@@ -16,7 +16,7 @@
           minlength="3"
           maxlength="10"
           pattern="[a-zA-Z]*"
-          city>
+          asyncCity>
         <div
           *ngIf="f?.controls['from']?.hasError('required')"
           class="text-danger">
@@ -26,6 +26,16 @@
           *ngIf="f?.controls['from']?.hasError('minlength')"
           class="text-danger">
           Please enter at least 3 chars.
+        </div>
+        <div
+          *ngIf="f?.controls['from']?.hasError('asyncCity')"
+          class="text-danger">
+          Async validation was not successful.
+        </div>
+        <div
+          *ngIf="f?.controls['from']?.pending"
+          class="text-danger">
+          ...async validation pending...
         </div>
       </div>
       <div class="form-group">
@@ -42,6 +52,11 @@
           class="btn btn-default">Search</button>
       </div>
     </form>
+    <div
+      *ngIf="f?.hasError('roundTrip')"
+      class="text-danger">
+      Why are you flying to the very same city - are you mad?
+    </div>
     <pre 
       *ngIf="f?.controls['from']?.errors">
       {{ f?.controls['from']?.errors | json }}
