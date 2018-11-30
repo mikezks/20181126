@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CityPipe } from './pipes/city.pipe';
 import { CityDirective } from './validators/city.directive';
@@ -10,7 +10,8 @@ import { RoundTripDirective } from './validators/round-trip.directive';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     CityPipe,
@@ -23,7 +24,8 @@ import { RoundTripDirective } from './validators/round-trip.directive';
     CityDirective,
     AsyncCityDirective,
     RoundTripDirective,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
