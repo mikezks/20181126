@@ -13,7 +13,7 @@ export class RoundTripDirective implements Validators {
 
   constructor() { }
 
-  static validate(c: AbstractControl): ValidationErrors | null {
+  validate(c: AbstractControl): ValidationErrors | null {
     const group: FormGroup = c as FormGroup;
 
     const fromCtrl = group.controls['from'];
