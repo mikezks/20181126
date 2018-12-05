@@ -27,7 +27,7 @@ export class AsyncCityDirective implements AsyncValidator {
           flights => ((flights.length > 0 || c.value.length <= 4) ? {} : { asyncCity: true })
         ),
         // Just for demo.
-        delay(4000)
+        //delay(4000)
       );
   }
 }
