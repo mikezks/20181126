@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
 import { FlightEditComponent } from './flight-booking/flight-edit/flight-edit.component';
 import { FlightTypeaheadComponent } from './flight-booking/flight-typeahead/flight-typeahead.component';
+import { FlightAutocompleteComponent } from './flight-booking/flight-autocomplete/flight-autocomplete.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'flight-booking/flight-typeahead',
     component: FlightTypeaheadComponent
+  },
+  {
+    path: 'flight-booking/flight-autocomplete',
+    component: FlightAutocompleteComponent
   },
   {
     path: '**',

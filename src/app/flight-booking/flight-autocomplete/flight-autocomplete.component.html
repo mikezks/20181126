@@ -1,0 +1,47 @@
+<!-- 
+  Source for basic autocomplete for this demo, which uses HTML, JavaScript and CSS,
+  but no Angular or TypeScript:
+
+  https://www.w3schools.com/howto/howto_js_dropdown.asp
+
+  See this implementation on how to change plain HTML, JavaScript and CSS so that it 
+  works in Angular.
+ -->
+
+<div class="card">
+  <div class="header">
+    <h2 class="title">Autocomplete Demo</h2>
+  </div>
+  <div class="content">
+    <form
+      [formGroup]="dropdownGroup"
+      class="form-group">
+      <div class="dropdown">
+        <input
+          formControlName="city"
+          class="form-control"
+          placeholder="Search city">
+        <ng-container *ngIf="searchResult$ | async as searchResult">
+          <div
+            class="dropdown-content"
+            *ngIf="showPanel">
+            <a
+              *ngFor="let item of searchResult"
+              (click)="selectCity(item)">
+              {{ item }}</a>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<div class="card" *ngIf="selectedCity$ | async as selectCity">
+  <div class="header">
+    <h4 class="title">Selected City</h4>
+  </div>
+  <div class="content">
+    {{ selectCity }}
+  </div>
+</div>

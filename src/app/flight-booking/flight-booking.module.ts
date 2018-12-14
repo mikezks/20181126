@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightTypeaheadComponent } from './flight-typeahead/flight-typeahead.component';
+import { FlightAutocompleteComponent } from './flight-autocomplete/flight-autocomplete.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { FlightTypeaheadComponent } from './flight-typeahead/flight-typeahead.co
     FlightSearchComponent,
     FlightCardComponent,
     FlightEditComponent,
-    FlightTypeaheadComponent
+    FlightTypeaheadComponent,
+    FlightAutocompleteComponent
   ],
   exports: [
     FlightSearchComponent
